@@ -48,6 +48,11 @@
         :data="message.data"
         :message-colors="messageColors"
       />
+      <AudioMessage
+        v-else-if="message.type === 'audio'"
+        :data="message.data"
+        :message-colors="messageColors"
+      />
       <TypingMessage v-else-if="message.type === 'typing'" :message-colors="messageColors" />
       <SystemMessage
         v-else-if="message.type === 'system'"
@@ -141,6 +146,7 @@ export default {
 
 .sc-message--content.sent {
   justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 .sc-message--content.system {
@@ -148,7 +154,8 @@ export default {
 }
 
 .sc-message--content.sent .sc-message--avatar {
-  display: none;
+  margin-left: 15px;
+  margin-right: inherit;
 }
 
 .sc-message--avatar {
