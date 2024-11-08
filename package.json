@@ -21,13 +21,12 @@
     "escape-goat": "^1.3.0",
     "imagemin": "^6.1.0",
     "kind-of": "6.0.3",
+    "material-icons": "^1.13.12",
     "minimist": "1.2.3",
     "msgdown": "^1.0.2",
     "v-tooltip": "^2.0.1"
   },
-  "peerDependencies": {
-    "material-icons": "^1.13.12"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.2.3",
     "@vue/cli-plugin-eslint": "~4.2.3",
@@ -57,13 +56,5 @@
   ],
   "bugs": {
     "url": "https://github.com/mattmezza/vue-beautiful-chat/issues"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,vue}": "vue-cli-service lint"
   }
 }
