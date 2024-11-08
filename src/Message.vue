@@ -113,14 +113,20 @@ export default {
     },
     receivedColorsStyle() {
       return {
-        color: this.colors.receivedMessage.text,
-        backgroundColor: this.colors.receivedMessage.bg
+        'color': this.colors.receivedMessage.text,
+        '--player-color-text': this.colors.sentMessage.text,
+        '--player-color-featured': this.colors.sentMessage.text,
+        'backgroundColor': this.colors.receivedMessage.bg,
+        '--player-color-background': this.colors.receivedMessage.bg
       }
     },
     sentColorsStyle() {
       return {
-        color: this.colors.sentMessage.text,
-        backgroundColor: this.colors.sentMessage.bg
+        'color': this.colors.sentMessage.text,
+        '--player-color-text': this.colors.sentMessage.text,
+        '--player-color-featured': this.colors.sentMessage.text,
+        'backgroundColor': this.colors.sentMessage.bg,
+        '--player-color-background': this.colors.sentMessage.bg
       }
     }
   }

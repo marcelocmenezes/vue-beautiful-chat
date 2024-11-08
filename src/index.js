@@ -1,4 +1,3 @@
-import 'material-icons/iconfont/material-icons.css'
 import Launcher from './Launcher.vue'
 import VTooltip from 'v-tooltip'
 const defaultComponentName = 'BeautifulChat'
