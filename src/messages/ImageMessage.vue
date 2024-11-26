@@ -1,16 +1,10 @@
 <template>
-  <div class="sc-message--file" :style="messageColors">
-    <div class="sc-message--file-icon">
-      <img :src="data.file.url" class="sc-image" />
-    </div>
-    <div class="sc-message--file-name" :style="messageColors">
-      <a :href="data.file.url ? data.file.url : '#'" target="_blank">{{ data.file.name || '' }}</a>
-    </div>
-    <div class="sc-message--file-text" :style="messageColors">
-      {{ data.text }}
-      <p v-if="data.meta" class="sc-message--meta" :style="messageColors">
-        {{ data.meta }}
-      </p>
+  <div class="image" :style="messageColors">
+    <div class="file">
+      <picture>
+        <img :src="data.file.url" :alt="data.text" />
+      </picture>
+      <span>{{ data.text }}</span>
     </div>
   </div>
 </template>
@@ -31,80 +25,39 @@ export default {
 </script>
 
 <style scoped>
-.sc-message--file {
-  border-radius: 6px;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.4;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
+.image {
+  --player-color-text: #c5c6c8;
+  --player-color-featured: #00e5c0;
+  --player-color-background: #262d31;
 
-.sc-message--content.sent .sc-message--file {
-  word-wrap: break-word;
-}
-
-.sc-message--file-icon {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15px;
-  margin-bottom: 0px;
-}
-
-.sc-image {
+  display: inline-flex;
+  min-width: 240px;
+  width: 336px;
   max-width: 100%;
-  min-width: 100%;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  user-select: none;
+  background: var(--player-color-background);
 }
 
-.sc-message--file-text {
-  padding: 17px 20px;
-  border-radius: 6px;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.4;
-  white-space: pre-wrap;
-  -webkit-font-smoothing: subpixel-antialiased;
+.image + .image {
+  margin-top: 1rem;
 }
 
-.sc-message--file-name {
-  color: white;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 0;
-  font-size: x-small;
-  text-align: center;
+.image .file {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
 }
 
-.sc-message--file-name a {
-  text-decoration: none;
-  color: #ece7e7;
+.image .file picture {
+  margin: 1em auto 2em;
 }
 
-.sc-message--file-name a:hover {
-  color: white;
-}
-
-.sc-message--content.sent .sc-message--file-text {
-  color: white;
-  background-color: #4e8cff;
-  word-wrap: break-word;
-}
-
-.sc-message--content.received .sc-message--file {
-  color: #263238;
-  background-color: #f4f7f9;
-  margin-right: 40px;
-}
-
-.sc-message--content.received .sc-message--file-name {
-  color: #000;
-}
-
-.sc-message--content.received .sc-message--file a {
-  color: rgba(43, 40, 40, 0.7);
-}
-
-.sc-message--content.received .sc-message--file a:hover {
-  color: #0c0c0c;
+.image .file picture img {
+  max-width: 100%;
+  border-radius: 0.4rem;
 }
 </style>
