@@ -43,6 +43,11 @@
         </template>
       </TextMessage>
       <EmojiMessage v-else-if="message.type === 'emoji'" :data="message.data" />
+      <ImageMessage
+        v-else-if="message.type === 'image'"
+        :data="message.data"
+        :message-colors="messageColors"
+      />
       <FileMessage
         v-else-if="message.type === 'file'"
         :data="message.data"
@@ -68,6 +73,7 @@
 <script>
 import TextMessage from './messages/TextMessage.vue'
 import FileMessage from './messages/FileMessage.vue'
+import ImageMessage from './messages/ImageMessage.vue'
 import AudioMessage from './messages/AudioMessage.vue'
 import EmojiMessage from './messages/EmojiMessage.vue'
 import TypingMessage from './messages/TypingMessage.vue'
@@ -78,6 +84,7 @@ export default {
   components: {
     TextMessage,
     FileMessage,
+    ImageMessage,
     AudioMessage,
     EmojiMessage,
     TypingMessage,
@@ -114,6 +121,8 @@ export default {
     receivedColorsStyle() {
       return {
         'color': this.colors.receivedMessage.text,
+        'stroke': this.colors.receivedMessage.text,
+        'fill': this.colors.receivedMessage.text,
         '--player-color-text': this.colors.sentMessage.text,
         '--player-color-featured': this.colors.sentMessage.text,
         'backgroundColor': this.colors.receivedMessage.bg,
@@ -123,6 +132,8 @@ export default {
     sentColorsStyle() {
       return {
         'color': this.colors.sentMessage.text,
+        'stroke': this.colors.sentMessage.text,
+        'fill': this.colors.sentMessage.text,
         '--player-color-text': this.colors.sentMessage.text,
         '--player-color-featured': this.colors.sentMessage.text,
         'backgroundColor': this.colors.sentMessage.bg,

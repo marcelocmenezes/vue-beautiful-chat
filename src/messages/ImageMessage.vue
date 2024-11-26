@@ -1,8 +1,7 @@
 <template>
   <div class="sc-message--file" :style="messageColors">
     <div class="sc-message--file-icon">
-      <!-- <img :src="data.file.url" class="sc-image" /> -->
-      <FileDownloadIcon class="sc-image" :url="data.file.url" :color="messageColors" />
+      <img :src="data.file.url" class="sc-image" />
     </div>
     <div class="sc-message--file-name" :style="messageColors">
       <a :href="data.file.url ? data.file.url : '#'" target="_blank">{{ data.file.name || '' }}</a>
@@ -17,12 +16,7 @@
 </template>
 
 <script>
-import FileDownloadIcon from '../icons/FileDownloadIcon.vue'
-
 export default {
-  components: {
-    FileDownloadIcon
-  },
   props: {
     data: {
       type: Object,
@@ -31,18 +25,6 @@ export default {
     messageColors: {
       type: Object,
       required: true
-    }
-  },
-  methods: {
-    handlerClick() {
-      console.info(data.file.url)
-      const link = document.createElement('a')
-      link.href = data.file.url
-      link.target = '_blank'
-      // link.download = `${url.split('/')[-1]}.pdf`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
     }
   }
 }
@@ -67,11 +49,11 @@ export default {
   margin-right: auto;
   margin-top: 15px;
   margin-bottom: 0px;
-  justify-items: center;
 }
 
 .sc-image {
-  width: 35%;
+  max-width: 100%;
+  min-width: 100%;
 }
 
 .sc-message--file-text {
@@ -104,14 +86,12 @@ export default {
 
 .sc-message--content.sent .sc-message--file-text {
   color: white;
-  stroke: white;
   background-color: #4e8cff;
   word-wrap: break-word;
 }
 
 .sc-message--content.received .sc-message--file {
   color: #263238;
-  stroke: #263238;
   background-color: #f4f7f9;
   margin-right: 40px;
 }
